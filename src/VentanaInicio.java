@@ -75,9 +75,16 @@ public class VentanaInicio extends JFrame {
                 VentanaDatos n = new VentanaDatos();
                 n.titulo.setText("Zombies");
                 ven.setVisible(false);
+            }
+        });
+
+        Edatos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              // eliminar datos
 
             }
         });
+
 
     }
 

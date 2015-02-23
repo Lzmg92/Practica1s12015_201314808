@@ -64,6 +64,15 @@ public class ListaDatos {
         size--;
     }
 
+    public void vaciarlista(){
+        cabeza = null;
+        cola = null;
+        size = 0;
+    }
+
+    public void grafo(){
+
+    }
 
     public int size(){
         return size;
