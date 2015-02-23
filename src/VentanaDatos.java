@@ -9,8 +9,14 @@ import java.awt.event.ActionListener;
 public class VentanaDatos extends JFrame {
 
     ListaDatos Jugadores = new ListaDatos();
+    PilaPlantas plantas = new PilaPlantas();
+    ColaZombies zombies = new ColaZombies();
 
     JFrame ven = new JFrame("Datos");
+
+    JMenuBar barra = new JMenuBar();
+    JMenu reporte = new JMenu("Reportes");
+    JMenuItem reporteuser = new JMenuItem("Reporte Jugador");
 
     JLabel titulo = new JLabel();
     JLabel nombre = new JLabel("Nombre");
@@ -33,6 +39,10 @@ public class VentanaDatos extends JFrame {
 
         ven.setLayout(null);
         ven.setVisible(true);
+
+        ven.setJMenuBar(barra);
+        barra.add(reporte);
+        reporte.add(reporteuser);
 
         ven.getContentPane().setBackground(Color.black);
 
@@ -72,25 +82,51 @@ public class VentanaDatos extends JFrame {
 
         Guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos);
+                if(titulo.getText().equals("Plantas")){
+                NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos, plantas);
                 VentanaInicio n = new VentanaInicio();
                 Jugadores.add(nuevito);
+                }else {
+                    NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos, zombies);
+                    VentanaInicio n = new VentanaInicio();
+                    Jugadores.add(nuevito);
+                }
 
-              /*
-
+/*
 
                 System.out.println("Vacia? " + Jugadores.estavacia());
                 System.out.println("Tamaño = " + Jugadores.size());
+                System.out.println("Tamaño = " + masdatos.size());
 
                 System.out.println("Nodo 1 Nombre = " + Jugadores.obtener(0).obtenernombre());
                 System.out.println("Nodo 1 Cantidad = " + Jugadores.obtener(0).obtenercantidad());
                 System.out.println("Nodo 1 Tipo = "+ Jugadores.obtener(0).obtenertipo());
                 System.out.println("Nodo 1 Extras1 = "+ Jugadores.obtener(0).obtenerextras().obtener(0).obtenercampo()+"  "+ Jugadores.obtener(0).obtenerextras().obtener(0).obtenervalor());
                 System.out.println("Nodo 1 Extras2 = "+ Jugadores.obtener(0).obtenerextras().obtener(1).obtenercampo()+"  "+ Jugadores.obtener(0).obtenerextras().obtener(1).obtenervalor());
-              */
+                System.out.println("Nodo 1 Extras3 = "+ Jugadores.obtener(0).obtenerextras().obtener(2).obtenercampo()+"  "+ Jugadores.obtener(0).obtenerextras().obtener(2).obtenervalor());
+
+
+                System.out.println("----------------- eliminado ---------------------");
+
+                masdatos.eliminiar(0);
+
+                System.out.println("Vacia? " + Jugadores.estavacia());
+                System.out.println("Tamaño J = " + Jugadores.size());
+                System.out.println("Tamaño = " + masdatos.size());
+
+                System.out.println("Nodo 1 Extras1 = "+ Jugadores.obtener(0).obtenerextras().obtener(0).obtenercampo()+"  "+ Jugadores.obtener(0).obtenerextras().obtener(0).obtenervalor());
+                System.out.println("Nodo 1 Extras2 = "+ Jugadores.obtener(0).obtenerextras().obtener(1).obtenercampo()+"  "+ Jugadores.obtener(0).obtenerextras().obtener(1).obtenervalor());
+
+            */
 
                 ven.setVisible(false);
                 }
+        });
+
+        reporteuser.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+            }
         });
 
 

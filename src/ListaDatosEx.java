@@ -49,6 +49,21 @@ public class ListaDatosEx {
         return temp;
     }
 
+    public void eliminiar(int index){
+        if(index == 0){
+            cabeza = cabeza.obtenersig();
+        } else {
+            int contador = 0;
+            NodoDatosEx temporal = cabeza;
+            while (contador < index-1){
+                temporal = temporal.obtenersig();
+                contador++;
+            }
+            temporal.enlacesig(temporal.obtenersig().obtenersig());
+        }
+        size--;
+    }
+
     public int size(){
         return size;
     }

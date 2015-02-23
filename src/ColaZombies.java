@@ -1,47 +1,36 @@
 /**
- * Created by Leslie on 22/02/2015.
+ * Created by Leslie on 23/02/2015.
  */
-public class ListaDatos {
+public class ColaZombies {
 
-    NodoDatos cabeza, cola;
+    NodoPersonaje cabeza, cola;
     int size;
 
-    public ListaDatos(){
+    public ColaZombies(){
         cabeza = null;
         cola = null;
         size = 0;
     }
 
-    public void addprimero(NodoDatos nod){
-        if(cabeza == null){
-            cabeza = nod;
-        } else {
-            NodoDatos temp = cabeza;
-            NodoDatos nuevo = nod;
-            nuevo.enlacesig(temp);
-            cabeza = nuevo;
-        }
-        size++;
-    }
 
-    public void add(NodoDatos nod){
+    public void push(NodoPersonaje plan){
         if(cola == null)
         {
-            cola = nod;
+            cola = plan;
             cabeza = cola;
         }
         else
         {
-            cola.sig = nod;
+            cola.sig = plan;
             cola = cola.sig;
         }
         size++;
     }
 
 
-    public NodoDatos obtener(int index){
+    public NodoPersonaje obtener(int index){
         int contador = 0;
-        NodoDatos temp = cabeza;
+        NodoPersonaje temp = cabeza;
         while(contador<index){
             temp = temp.obtenersig();
             contador++;
@@ -54,7 +43,7 @@ public class ListaDatos {
             cabeza = cabeza.obtenersig();
         } else {
             int contador = 0;
-            NodoDatos temporal = cabeza;
+            NodoPersonaje temporal = cabeza;
             while (contador < index-1){
                 temporal = temporal.obtenersig();
                 contador++;
@@ -64,6 +53,13 @@ public class ListaDatos {
         size--;
     }
 
+
+    public NodoPersonaje get(){
+        NodoPersonaje primero = obtener(0);
+        eliminiar(0);
+        return primero;
+
+    }
 
     public int size(){
         return size;
@@ -76,6 +72,7 @@ public class ListaDatos {
             return false;
         }
     }
+
 
 
 }

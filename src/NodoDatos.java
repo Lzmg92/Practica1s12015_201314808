@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Created by Leslie on 22/02/2015.
  */
@@ -6,14 +8,17 @@ public class NodoDatos {
     String nombre;
     String tipo;
     int cantidad;
+    Object pilacola;
     ListaDatosEx extras;
     NodoDatos sig;
 
-    public NodoDatos(String nombre, String tipo, int cantidad, ListaDatosEx extras ){
+
+    public NodoDatos(String nombre, String tipo, int cantidad, ListaDatosEx extras, Object pilacola ){
         this.nombre = nombre;
         this.tipo = tipo;
         this.cantidad = cantidad;
         this.extras = extras;
+        this.pilacola = pilacola;
         this.sig = null;
     }
 
@@ -38,6 +43,10 @@ public class NodoDatos {
     }
 
     public ListaDatosEx obtenerextras() {return extras;}
+
+    public Object obtenerpilacola(){
+        return pilacola;
+    }
 
 
 }
