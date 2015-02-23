@@ -1,11 +1,15 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.jar.JarEntry;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  * Created by Leslie on 14/02/2015.
  */
 public class VentanaInicio extends JFrame {
+
+    Main n = new Main();
 
     JFrame ven = new JFrame("Plants vrs Zombies");
 
@@ -26,6 +30,8 @@ public class VentanaInicio extends JFrame {
 
     JLabel imaplanta = new JLabel(plantaesc);
     JLabel imazombie = new JLabel(zombieesc);
+
+
 
     public VentanaInicio(){
 
@@ -57,6 +63,43 @@ public class VentanaInicio extends JFrame {
         imazombie.setBounds(360, 150, 110, 110);
         Edatos.setBounds(50, 320, 150, 30);
         inicio.setBounds(300, 320, 250, 30);
+
+
+        JugP.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VentanaDatos n = new VentanaDatos();
+                n.titulo.setText("Plantas");
+                ven.setVisible(false);
+
+            }
+        });
+
+        JugZ.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VentanaDatos n = new VentanaDatos();
+                n.titulo.setText("Zombies");
+                ven.setVisible(false);
+
+            }
+        });
+
+
+
+
+
+        System.out.println("Vacia? " + n.Jugadores.estavacia());
+        System.out.println("Tamaño = " + n.Jugadores.size());
+
+        System.out.println("Nodo 1 Nombre = " + n.Jugadores.obtener(0).obtenernombre());
+        System.out.println("Nodo 1 Cantidad = " + n.Jugadores.obtener(0).obtenercantidad());
+        System.out.println("Nodo 1 Tipo = "+ n.Jugadores.obtener(0).obtenertipo());
+        System.out.println("Nodo 1 Extras1 = "+ n.Jugadores.obtener(0).obtenerextras().obtener(0).obtenercampo()+"  "+ n.Jugadores.obtener(0).obtenerextras().obtener(0).obtenervalor());
+
+
+
+
+
+
 
 
 

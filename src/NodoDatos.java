@@ -4,13 +4,16 @@
 public class NodoDatos {
 
     String nombre;
+    String tipo;
     int cantidad;
-    NodoDatosEx extras;
+    ListaDatosEx extras;
     NodoDatos sig;
 
-    public NodoDatos(String nombre, int cantidad ){
+    public NodoDatos(String nombre, String tipo, int cantidad, ListaDatosEx extras ){
         this.nombre = nombre;
+        this.tipo = tipo;
         this.cantidad = cantidad;
+        this.extras = extras;
         this.sig = null;
     }
 
@@ -26,8 +29,15 @@ public class NodoDatos {
         return nombre;
     }
 
+    public String obtenertipo(){
+        return tipo;
+    }
+
     public int obtenercantidad(){
         return cantidad;
     }
+
+    public ListaDatosEx obtenerextras() {return extras;}
+
 
 }
