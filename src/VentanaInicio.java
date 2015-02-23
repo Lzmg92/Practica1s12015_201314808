@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,8 +6,6 @@ import java.awt.event.ActionListener;
  * Created by Leslie on 14/02/2015.
  */
 public class VentanaInicio extends JFrame {
-
-    Main n = new Main();
 
     JFrame ven = new JFrame("Plants vrs Zombies");
 
@@ -20,11 +16,11 @@ public class VentanaInicio extends JFrame {
     JButton inicio = new JButton("Comenzar Juego");
     JButton Edatos = new JButton("Eliminar Datos");
 
-    ImageIcon planta = new javax.swing.ImageIcon(getClass().getResource("Tira guisantes.png"));
+    ImageIcon planta = new javax.swing.ImageIcon(getClass().getResource("img/Tira guisantes.png"));
     Image implanta = planta.getImage();
     ImageIcon plantaesc = new ImageIcon(implanta.getScaledInstance(100,100,Image.SCALE_SMOOTH));
 
-    ImageIcon zombie = new javax.swing.ImageIcon(getClass().getResource("zombie.png"));
+    ImageIcon zombie = new javax.swing.ImageIcon(getClass().getResource("img/zombie.png"));
     Image imzobie = zombie.getImage();
     ImageIcon zombieesc = new ImageIcon(imzobie.getScaledInstance(100,110,Image.SCALE_SMOOTH));
 
@@ -82,26 +78,6 @@ public class VentanaInicio extends JFrame {
 
             }
         });
-
-
-
-
-
-        System.out.println("Vacia? " + n.Jugadores.estavacia());
-        System.out.println("Tamaño = " + n.Jugadores.size());
-
-        System.out.println("Nodo 1 Nombre = " + n.Jugadores.obtener(0).obtenernombre());
-        System.out.println("Nodo 1 Cantidad = " + n.Jugadores.obtener(0).obtenercantidad());
-        System.out.println("Nodo 1 Tipo = "+ n.Jugadores.obtener(0).obtenertipo());
-        System.out.println("Nodo 1 Extras1 = "+ n.Jugadores.obtener(0).obtenerextras().obtener(0).obtenercampo()+"  "+ n.Jugadores.obtener(0).obtenerextras().obtener(0).obtenervalor());
-
-
-
-
-
-
-
-
 
     }
 
