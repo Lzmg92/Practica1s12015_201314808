@@ -84,11 +84,11 @@ public class VentanaDatos extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if(titulo.getText().equals("Plantas")){
                 NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos, plantas);
-                VentanaInicio n = new VentanaInicio();
+               // VentanaInicio n = new VentanaInicio();
                 Jugadores.add(nuevito);
                 }else {
                     NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos, zombies);
-                    VentanaInicio n = new VentanaInicio();
+                //    VentanaInicio n = new VentanaInicio();
                     Jugadores.add(nuevito);
                 }
 
@@ -119,13 +119,13 @@ public class VentanaDatos extends JFrame {
 
             */
 
-                ven.setVisible(false);
+               // ven.setVisible(false);
                 }
         });
 
         reporteuser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+           Jugadores.grafo();
             }
         });
 
