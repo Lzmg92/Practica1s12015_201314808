@@ -4,6 +4,8 @@
 public class Main {
 
     public static ListaDatos Jugadores = new ListaDatos();
+    public static PilaPlantas plantas = new PilaPlantas();
+    public static ColaZombies zombies = new ColaZombies();
 
     public static void main(String[] args) {
 

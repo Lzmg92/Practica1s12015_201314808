@@ -11,6 +11,10 @@ public class VentanaInicio extends JFrame {
 
     JLabel titulo = new JLabel("Plants vrs Zombies");
 
+    JMenuBar barra = new JMenuBar();
+    JMenu reporte = new JMenu("Reportes");
+    JMenuItem reporteuser = new JMenuItem("Reporte Jugadores");
+
     JButton JugP = new JButton("Jugador Plantas");
     JButton JugZ = new JButton("Jugador Zombies");
     JButton inicio = new JButton("Comenzar Juego");
@@ -27,7 +31,7 @@ public class VentanaInicio extends JFrame {
     JLabel imaplanta = new JLabel(plantaesc);
     JLabel imazombie = new JLabel(zombieesc);
 
-
+    final Main es = new Main();
 
     public VentanaInicio(){
 
@@ -38,6 +42,10 @@ public class VentanaInicio extends JFrame {
 
         ven.setLayout(null);
         ven.setVisible(true);
+
+        ven.setJMenuBar(barra);
+        barra.add(reporte);
+        reporte.add(reporteuser);
 
         ven.getContentPane().setBackground(Color.black);
 
@@ -57,8 +65,8 @@ public class VentanaInicio extends JFrame {
         imaplanta.setBounds(110, 150, 110, 110);
         JugZ.setBounds(350, 90, 150, 30);
         imazombie.setBounds(360, 150, 110, 110);
-        Edatos.setBounds(50, 320, 150, 30);
-        inicio.setBounds(300, 320, 250, 30);
+        Edatos.setBounds(100, 300, 150, 30);
+        inicio.setBounds(300, 300, 250, 30);
 
 
         JugP.addActionListener(new ActionListener() {
@@ -80,12 +88,17 @@ public class VentanaInicio extends JFrame {
 
         Edatos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-              // eliminar datos
+              es.Jugadores.vaciarlista();
 
             }
         });
 
 
+        reporteuser.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                es.Jugadores.grafo();
+            }
+        });
     }
 
 

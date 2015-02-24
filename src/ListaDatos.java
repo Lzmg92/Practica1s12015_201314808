@@ -75,8 +75,6 @@ public class ListaDatos {
 
 
 
-    String [] nombres ;
-
     public void Escribir (String NombreArchivo){
 
         File f;
@@ -96,26 +94,26 @@ public class ListaDatos {
             for(int i=0;i< size();i++){
                 wr.write(" {  rank = same; ");
                 wr.write(" Jugador"+(i+1)+"[label = "+obtener(i).obtenernombre()+"]; ");
-                wr.write(" nodo1[label = "+obtener(i).obtenertipo()+"]; ");
-                wr.write(" nodo2[label = "+obtener(i).obtenercantidad()+"]; ");
+                wr.write(" nodo"+i+"_1[label = "+obtener(i).obtenertipo()+"]; ");
+                wr.write(" nodo"+i+"_2[label = "+obtener(i).obtenercantidad()+"]; ");
                 ListaDatosEx temp = obtener(i).obtenerextras();
                 int cont = 0;
                 for(int j=0; j < temp.size();j++){
-                    wr.write(" nodo0"+j+"[label = "+temp.obtener(j).obtenercampo()+"_"+temp.obtener(j).obtenervalor()+"]; ");
+                    wr.write(" nodo"+i+""+j+"[label = "+temp.obtener(j).obtenercampo()+"_"+temp.obtener(j).obtenervalor()+"]; ");
                     cont++;
                 }
-                wr.write(" Jugador1 -> nodo1; \n" +
-                        " nodo1 -> nodo2; \n" +
-                         " nodo2 -> nodo00; ");
+                wr.write(" Jugador"+(i+1)+" -> nodo"+i+"_1; \n" +
+                        " nodo"+i+"_1 -> nodo"+i+"_2; \n" +
+                         " nodo"+i+"_2 -> nodo"+i+"0; ");
                 for(int m = 0; m <= cont-2; m++){
-                       wr.write(" nodo0"+m+" -> nodo0"+(m+1)+"; ");
+                       wr.write(" nodo"+i+""+m+" -> nodo"+i+""+(m+1)+"; ");
                 }
                 wr.write(" }; ");
-                wr.write(" Jugadores -> Jugador1; " +
-                        "  Jugador1 -> Jugador2; " +
-                        "}");
+           }
 
-            }
+            wr.write(" Jugadores -> Jugador1; " +
+                    "  Jugador1 -> Jugador2; " +
+                    "}");
 
             wr.close();
             bw.close();
@@ -127,19 +125,13 @@ public class ListaDatos {
     }
 
 
-
-
-
     public void grafo(){
-
-
-        Escribir("grafo1.txt");
+        Escribir("grafojugadores.txt");
         try {
-
             String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
 
-            String fileInputPath = "C:\\Users\\Leslie\\Desktop\\grafo1.txt";
-            String fileOutputPath = "C:\\Users\\Leslie\\Desktop\\grafo1.jpg";
+            String fileInputPath = "C:\\Users\\Leslie\\Desktop\\grafojugadores.txt";
+            String fileOutputPath = "C:\\Users\\Leslie\\Desktop\\grafojugadores.jpg";
 
             String tParam = "-Tjpg";
             String tOParam = "-o";
