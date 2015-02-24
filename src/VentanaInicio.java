@@ -89,7 +89,12 @@ public class VentanaInicio extends JFrame {
         Edatos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               es.Jugadores.vaciarlista();
+            }
+        });
 
+        inicio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VentanaTipos n = new VentanaTipos();
             }
         });
 
