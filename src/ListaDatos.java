@@ -93,9 +93,9 @@ public class ListaDatos {
 
             for(int i=0;i< size();i++){
                 wr.write(" {  rank = same; ");
-                wr.write(" Jugador"+(i+1)+"[label = "+obtener(i).obtenernombre()+"]; ");
-                wr.write(" nodo"+i+"_1[label = "+obtener(i).obtenertipo()+"]; ");
-                wr.write(" nodo"+i+"_2[label = "+obtener(i).obtenercantidad()+"]; ");
+                wr.write(" Jugador"+(i+1)+"[label = Nombre_"+obtener(i).obtenernombre()+"]; ");
+                wr.write(" nodo"+i+"_1[label = Tipo_"+obtener(i).obtenertipo()+"]; ");
+                wr.write(" nodo"+i+"_2[label = Cantidad_"+obtener(i).obtenercantidad()+"]; ");
                 ListaDatosEx temp = obtener(i).obtenerextras();
                 int cont = 0;
                 for(int j=0; j < temp.size();j++){

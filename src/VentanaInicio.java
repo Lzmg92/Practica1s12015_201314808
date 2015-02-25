@@ -20,6 +20,8 @@ public class VentanaInicio extends JFrame {
     JButton inicio = new JButton("Comenzar Juego");
     JButton Edatos = new JButton("Eliminar Datos");
 
+
+
     ImageIcon planta = new javax.swing.ImageIcon(getClass().getResource("img/Tira guisantes.png"));
     Image implanta = planta.getImage();
     ImageIcon plantaesc = new ImageIcon(implanta.getScaledInstance(100,100,Image.SCALE_SMOOTH));
@@ -94,7 +96,15 @@ public class VentanaInicio extends JFrame {
 
         inicio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                VentanaTipos n = new VentanaTipos();
+              //  if(es.Jugadores.obtener(0).obtenertipo().equals("Plantas")){
+                //    es.titulo = "Datos Plantas";
+                    VentanaTipos n = new VentanaTipos();
+
+                 //   } else {
+                 //      es.titulo = "Datos Zombies";
+                 //   VentanaTipos n = new VentanaTipos();
+            //    }
+                ven.setVisible(false);
             }
         });
 
