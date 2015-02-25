@@ -33,6 +33,7 @@ public class VentanaTipos extends JFrame{
     JButton Modificar = new JButton("Modificar");
     JButton Eliminar = new JButton("Eliminar");
     JButton Finalizar = new JButton("Finalizar");
+    JLabel Nombre = new JLabel(m.nombretipo);
 
     public VentanaTipos(){
 
@@ -55,6 +56,7 @@ public class VentanaTipos extends JFrame{
         ven.add(Modificar);
         ven.add(Eliminar);
         ven.add(Finalizar);
+        ven.add(Nombre);
 
         modelo = new MyTableModel(data, col);
         tablaregistro.setModel(modelo);
@@ -62,12 +64,16 @@ public class VentanaTipos extends JFrame{
         tablaregistro.setShowGrid(false);
         tablaregistro.setBackground(Color.GRAY);
 
+        Nombre.setFont(new Font("Arial Rounded", Font.BOLD, 15));
+        Nombre.setForeground(Color.white);
+
         scroll.setBounds(25 ,60, 550, 270);
 
         Nuevo.setBounds(25, 10, 100, 30);
         Modificar.setBounds(135, 10, 100, 30);
         Eliminar.setBounds(245, 10, 100, 30);
         Finalizar.setBounds(355, 10, 100, 30);
+        Nombre.setBounds(465, 10, 200, 30);
 
         //////////////////////////////////////////////////// BOTONES
 

@@ -4,6 +4,7 @@
 public class Main {
 
     public static String titulo = "Datos Plantas";
+    public static String nombretipo = "";
     public static ListaDatos Jugadores = new ListaDatos();
     public static PilaPlantas plantas = new PilaPlantas();
     public static ColaZombies zombies = new ColaZombies();

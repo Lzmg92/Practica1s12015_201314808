@@ -96,14 +96,16 @@ public class VentanaInicio extends JFrame {
 
         inicio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-              //  if(es.Jugadores.obtener(0).obtenertipo().equals("Plantas")){
-                //    es.titulo = "Datos Plantas";
+                if(es.Jugadores.obtener(0).obtenertipo().equals("Plantas")){
+                    es.titulo = "Datos Plantas";
+                    es.nombretipo =  es.Jugadores.obtener(0).obtenertipo() + " " + es.Jugadores.obtener(0).obtenernombre();
                     VentanaTipos n = new VentanaTipos();
 
-                 //   } else {
-                 //      es.titulo = "Datos Zombies";
-                 //   VentanaTipos n = new VentanaTipos();
-            //    }
+                    } else {
+                    es.titulo = "Datos Zombies";
+                    es.nombretipo =  es.Jugadores.obtener(0).obtenertipo() + " " + es.Jugadores.obtener(0).obtenernombre();
+                    VentanaTipos n = new VentanaTipos();
+                }
                 ven.setVisible(false);
             }
         });
