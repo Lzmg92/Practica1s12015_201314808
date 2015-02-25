@@ -12,6 +12,9 @@ public class VentanaTipos extends JFrame{
 
     final Main m = new Main();
 
+    PilaPlantas pilalocal = new PilaPlantas();
+    ColaZombies colalocal = new ColaZombies();
+
     JFrame ven = new JFrame(m.titulo);
 
     MyTableModel modelo;
@@ -106,6 +109,16 @@ public class VentanaTipos extends JFrame{
 
                 Object[] temp = {imatemp, nombre, pts, ataque };
                 modelo.addRow(temp);
+
+                NodoPersonaje tempo = new NodoPersonaje(ruta, nombre, puntos,ataque);
+
+                if(m.titulo.equals("Datos Plantas")){
+                    pilalocal.push(tempo);
+                } else {
+                    colalocal.push(tempo);
+                }
+
+
             }
         });
 
@@ -115,6 +128,11 @@ public class VentanaTipos extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 int temp = tablaregistro.getSelectedRow();
                 modelo.removeRow(temp);
+                if(m.titulo.equals("Datos Plantas")){
+                    pilalocal.eliminiar(temp);
+                } else {
+                    colalocal.eliminiar(temp);
+                }
             }
         });
 
@@ -124,10 +142,43 @@ public class VentanaTipos extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 int tempo = tablaregistro.getSelectedRow();
                 modelo.removeRow(tempo);
+
                 ImageIcon imatemp = JalarImagen();
-                String tiempo = JOptionPane.showInputDialog("Ingrese Nuevo Nombre ");
-                Object[] temp = {tiempo, imatemp};
+                String nombre = JOptionPane.showInputDialog("Ingrese Nuevo Nombre ");
+                System.out.println(ruta);
+                String pts = JOptionPane.showInputDialog("Ingrese la Cantidad de Puntos ");
+                int puntos = Integer.parseInt(pts);
+                String ataque;
+
+                int seleccion = JOptionPane.showOptionDialog(
+                        null,
+                        "Seleccione Tipo de Ataque",
+                        "Ataque",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        new Object[] { "Directo", "Disparo" },
+                        "Directo");
+
+                if (seleccion == 0){
+                    ataque = "Directo";
+                }else
+                {
+                    ataque = "Disparo";
+                }
+
+                Object[] temp = {imatemp, nombre, pts, ataque };
                 modelo.addRow(temp);
+
+                NodoPersonaje modificado = new NodoPersonaje(ruta, nombre, puntos, ataque);
+
+                if(m.titulo.equals("Datos Plantas")){
+                    pilalocal.eliminiar(tempo);
+                    pilalocal.push(modificado);
+                } else {
+                    colalocal.eliminiar(tempo);
+                    colalocal.push(modificado);
+                }
             }
         });
 
@@ -136,6 +187,7 @@ public class VentanaTipos extends JFrame{
         Finalizar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
+                SigVentana(m.titulo);
             }
         });
     }
@@ -150,6 +202,29 @@ public class VentanaTipos extends JFrame{
         Image implanta = planta.getImage();
         ImageIcon plantaesc = new ImageIcon(implanta.getScaledInstance(40,40,Image.SCALE_SMOOTH));
         return plantaesc;
+    }
+
+
+    public void SigVentana(String tipo){
+        if(tipo.equals("Datos Plantas") && m.esPrimera == true){
+            m.Jugadores.obtener(0).setPilacola(pilalocal);
+            m.titulo = "Datos Zombies";
+            m.esPrimera = false;
+            m.nombretipo = m.Jugadores.obtener(1).obtenernombre()+" "+m.Jugadores.obtener(1).obtenertipo();
+            VentanaTipos nueva = new VentanaTipos();
+        } else if (tipo.equals("Datos Zombies") && m.esPrimera == true) {
+            m.Jugadores.obtener(0).setPilacola(colalocal);
+            m.titulo = "Datos Plantas";
+            m.esPrimera = false;
+            m.nombretipo = m.Jugadores.obtener(1).obtenernombre()+" "+m.Jugadores.obtener(1).obtenertipo();
+            VentanaTipos nueva = new VentanaTipos();
+        } else if (tipo.equals("Datos Plantas") && m.esPrimera == false) {
+            m.Jugadores.obtener(1).setPilacola(pilalocal);
+            Tablero nue = new Tablero();
+        } else {
+            m.Jugadores.obtener(1).setPilacola(colalocal);
+            Tablero nue = new Tablero();
+        }
     }
 
 }

@@ -48,5 +48,24 @@ public class NodoDatos {
         return pilacola;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setPilacola(Object pilacola) {
+        this.pilacola = pilacola;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setExtras(ListaDatosEx extras) {
+        this.extras = extras;
+    }
 
 }

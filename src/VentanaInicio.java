@@ -99,11 +99,13 @@ public class VentanaInicio extends JFrame {
                 if(es.Jugadores.obtener(0).obtenertipo().equals("Plantas")){
                     es.titulo = "Datos Plantas";
                     es.nombretipo =  es.Jugadores.obtener(0).obtenertipo() + " " + es.Jugadores.obtener(0).obtenernombre();
+                    es.esPrimera = true;
                     VentanaTipos n = new VentanaTipos();
 
                     } else {
                     es.titulo = "Datos Zombies";
                     es.nombretipo =  es.Jugadores.obtener(0).obtenertipo() + " " + es.Jugadores.obtener(0).obtenernombre();
+                    es.esPrimera = true;
                     VentanaTipos n = new VentanaTipos();
                 }
                 ven.setVisible(false);

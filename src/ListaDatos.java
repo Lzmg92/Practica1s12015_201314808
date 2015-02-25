@@ -74,6 +74,10 @@ public class ListaDatos {
     }
 
 
+    public int size(){
+        return size;
+    }
+
 
     public void Escribir (String NombreArchivo){
 
@@ -91,7 +95,7 @@ public class ListaDatos {
                     " node[shape = Mrecord]; \n" +
                     " rankidir = UD; \n");
 
-            for(int i=0;i< size();i++){
+            for(int i=0; i < size; i++){
                 wr.write(" {  rank = same; ");
                 wr.write(" Jugador"+(i+1)+"[label = Nombre_"+obtener(i).obtenernombre()+"]; ");
                 wr.write(" nodo"+i+"_1[label = Tipo_"+obtener(i).obtenertipo()+"]; ");
@@ -154,9 +158,7 @@ public class ListaDatos {
 
     }
 
-    public int size(){
-        return size;
-    }
+
 
     public boolean estavacia(){
         if(cola == null){
