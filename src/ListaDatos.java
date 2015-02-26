@@ -82,7 +82,7 @@ public class ListaDatos {
     public void Escribir (String NombreArchivo){
 
         File f;
-        f = new File("C:\\Users\\Leslie\\Desktop", NombreArchivo);
+        f = new File(System.getProperty("user.home") , NombreArchivo);
 
         try{
             FileWriter w = new FileWriter(f);
@@ -129,13 +129,16 @@ public class ListaDatos {
     }
 
 
-    public void grafo(){
+    public void grafo(String rutadot, String rutaescritura){
+        System.out.println(rutaescritura);
         Escribir("grafojugadores.txt");
         try {
-            String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+          //  String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
 
-            String fileInputPath = "C:\\Users\\Leslie\\Desktop\\grafojugadores.txt";
-            String fileOutputPath = "C:\\Users\\Leslie\\Desktop\\grafojugadores.jpg";
+            String dotPath = rutadot;
+
+            String fileInputPath = rutaescritura+ System.getProperty("file.separator") + "grafojugadores.txt";
+                       String fileOutputPath = rutaescritura+ System.getProperty("file.separator") + "grafojugadores.jpg";
 
             String tParam = "-Tjpg";
             String tOParam = "-o";

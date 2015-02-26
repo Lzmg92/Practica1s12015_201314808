@@ -12,8 +12,8 @@ public class VentanaTipos extends JFrame{
 
     final Main m = new Main();
 
-    PilaPlantas pilalocal = new PilaPlantas();
-    ColaZombies colalocal = new ColaZombies();
+    ListaPersonajes ListaLocalP = new ListaPersonajes();
+    ListaPersonajes ListaLocalZ = new ListaPersonajes();
 
     JFrame ven = new JFrame(m.titulo);
 
@@ -113,9 +113,9 @@ public class VentanaTipos extends JFrame{
                 NodoPersonaje tempo = new NodoPersonaje(ruta, nombre, puntos,ataque);
 
                 if(m.titulo.equals("Datos Plantas")){
-                    pilalocal.push(tempo);
+                    ListaLocalP.push(tempo);
                 } else {
-                    colalocal.push(tempo);
+                    ListaLocalZ.push(tempo);
                 }
 
 
@@ -129,9 +129,9 @@ public class VentanaTipos extends JFrame{
                 int temp = tablaregistro.getSelectedRow();
                 modelo.removeRow(temp);
                 if(m.titulo.equals("Datos Plantas")){
-                    pilalocal.eliminiar(temp);
+                    ListaLocalP.eliminiar(temp);
                 } else {
-                    colalocal.eliminiar(temp);
+                    ListaLocalZ.eliminiar(temp);
                 }
             }
         });
@@ -173,11 +173,11 @@ public class VentanaTipos extends JFrame{
                 NodoPersonaje modificado = new NodoPersonaje(ruta, nombre, puntos, ataque);
 
                 if(m.titulo.equals("Datos Plantas")){
-                    pilalocal.eliminiar(tempo);
-                    pilalocal.push(modificado);
+                    ListaLocalP.eliminiar(tempo);
+                    ListaLocalZ.push(modificado);
                 } else {
-                    colalocal.eliminiar(tempo);
-                    colalocal.push(modificado);
+                    ListaLocalP.eliminiar(tempo);
+                    ListaLocalZ.push(modificado);
                 }
             }
         });
@@ -204,25 +204,70 @@ public class VentanaTipos extends JFrame{
         return plantaesc;
     }
 
+    public void LlenarPila(int cantidad, ListaPersonajes personajes){
+            for (int i = 0; i < cantidad; i++){
+                m.PilaPrun.push(personajes.obtener(random(0,personajes.size()-1)));
+            }
+    }
+
+    public void LlenarCola(int cantidad, ListaPersonajes personajes){
+        for (int i = 0; i < cantidad; i++){
+            m.ColaZrun.push(personajes.obtener(random(0,personajes.size()-1)));
+        }
+    }
+
+    int random(int min, int max)
+    {
+        int range = Math.abs(max - min) + 1;
+        return (int)(Math.random() * range) + (min <= max ? min : max);
+    }
+
 
     public void SigVentana(String tipo){
         if(tipo.equals("Datos Plantas") && m.esPrimera == true){
-            m.Jugadores.obtener(0).setPilacola(pilalocal);
+            m.Jugadores.obtener(0).setPersonajes(ListaLocalP);
+            LlenarPila(m.Jugadores.obtener(0).cantidad, ListaLocalP);
             m.titulo = "Datos Zombies";
             m.esPrimera = false;
             m.nombretipo = m.Jugadores.obtener(1).obtenernombre()+" "+m.Jugadores.obtener(1).obtenertipo();
             VentanaTipos nueva = new VentanaTipos();
+
         } else if (tipo.equals("Datos Zombies") && m.esPrimera == true) {
-            m.Jugadores.obtener(0).setPilacola(colalocal);
+            m.Jugadores.obtener(0).setPersonajes(ListaLocalZ);
+            LlenarCola(m.Jugadores.obtener(0).cantidad, ListaLocalZ);
             m.titulo = "Datos Plantas";
             m.esPrimera = false;
             m.nombretipo = m.Jugadores.obtener(1).obtenernombre()+" "+m.Jugadores.obtener(1).obtenertipo();
             VentanaTipos nueva = new VentanaTipos();
+
         } else if (tipo.equals("Datos Plantas") && m.esPrimera == false) {
-            m.Jugadores.obtener(1).setPilacola(pilalocal);
+            m.Jugadores.obtener(1).setPersonajes(ListaLocalP);
+            LlenarPila(m.Jugadores.obtener(1).cantidad, ListaLocalP);
+
+            String menx = JOptionPane.showInputDialog("Ingrese la cantidad de nodos en X");
+            String meny = JOptionPane.showInputDialog("Ingrese la cantidad de nodos en Y");
+
+            int eny = Integer.parseInt(meny);
+            int enx = Integer.parseInt(menx);
+
+            m.coorfilas = Math.round(550/eny);
+            m.coorcolum = Math.round(700/enx);
+
             Tablero nue = new Tablero();
-        } else {
-            m.Jugadores.obtener(1).setPilacola(colalocal);
+
+        } else if (tipo.equals("Datos Zombies") && m.esPrimera == false){
+            m.Jugadores.obtener(1).setPersonajes(ListaLocalZ);
+            LlenarCola(m.Jugadores.obtener(1).cantidad, ListaLocalZ);
+
+            String menx = JOptionPane.showInputDialog("Ingrese la cantidad de nodos en X");
+            String meny = JOptionPane.showInputDialog("Ingrese la cantidad de nodos en Y");
+
+            int eny = Integer.parseInt(meny);
+            int enx = Integer.parseInt(menx);
+
+            m.coorfilas = Math.round(550/eny);
+            m.coorcolum = Math.round(700/enx);
+
             Tablero nue = new Tablero();
         }
     }

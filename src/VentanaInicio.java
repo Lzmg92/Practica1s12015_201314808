@@ -20,7 +20,9 @@ public class VentanaInicio extends JFrame {
     JButton inicio = new JButton("Comenzar Juego");
     JButton Edatos = new JButton("Eliminar Datos");
 
-
+    JFileChooser fc = new JFileChooser();
+    JFileChooser fc2 = new JFileChooser();
+    String ruta, ruta2;
 
     ImageIcon planta = new javax.swing.ImageIcon(getClass().getResource("img/Tira guisantes.png"));
     Image implanta = planta.getImage();
@@ -96,7 +98,7 @@ public class VentanaInicio extends JFrame {
 
         inicio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(es.Jugadores.obtener(0).obtenertipo().equals("Plantas")){
+               if(es.Jugadores.obtener(0).obtenertipo().equals("Plantas")){
                     es.titulo = "Datos Plantas";
                     es.nombretipo =  es.Jugadores.obtener(0).obtenertipo() + " " + es.Jugadores.obtener(0).obtenernombre();
                     es.esPrimera = true;
@@ -115,7 +117,16 @@ public class VentanaInicio extends JFrame {
 
         reporteuser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                es.Jugadores.grafo();
+
+                fc.showSaveDialog(fc);
+                int rest = fc.APPROVE_OPTION;
+                if(rest==JFileChooser.APPROVE_OPTION)
+                {String b=fc.getSelectedFile().toString();
+                    ruta = b;}
+
+                es.Jugadores.grafo(ruta, System.getProperty("user.home"));
+                System.out.println(ruta);
+                System.out.println(System.getProperty("user.home")+ System.getProperty("file.separator")+"Desktop");
             }
         });
     }

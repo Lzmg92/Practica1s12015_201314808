@@ -8,17 +8,17 @@ public class NodoDatos {
     String nombre;
     String tipo;
     int cantidad;
-    Object pilacola;
     ListaDatosEx extras;
+    ListaPersonajes personajes;
     NodoDatos sig;
 
 
-    public NodoDatos(String nombre, String tipo, int cantidad, ListaDatosEx extras, Object pilacola ){
+    public NodoDatos(String nombre, String tipo, int cantidad, ListaDatosEx extras, ListaPersonajes personajes ){
         this.nombre = nombre;
         this.tipo = tipo;
         this.cantidad = cantidad;
         this.extras = extras;
-        this.pilacola = pilacola;
+        this.personajes = personajes;
         this.sig = null;
     }
 
@@ -44,8 +44,8 @@ public class NodoDatos {
 
     public ListaDatosEx obtenerextras() {return extras;}
 
-    public Object obtenerpilacola(){
-        return pilacola;
+    public Object obtenerPersonajes(){
+        return personajes;
     }
 
     public void setNombre(String nombre) {
@@ -56,8 +56,8 @@ public class NodoDatos {
         this.tipo = tipo;
     }
 
-    public void setPilacola(Object pilacola) {
-        this.pilacola = pilacola;
+    public void setPersonajes(Object pilacola) {
+        this.personajes = personajes;
     }
 
     public void setCantidad(int cantidad) {

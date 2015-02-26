@@ -81,11 +81,11 @@ public class VentanaDatos extends JFrame {
         Guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(titulo.getText().equals("Plantas")){
-                NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos, es.Pplantas);
+                NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos, es.ListaPjugP);
                 VentanaInicio n = new VentanaInicio();
                 es.Jugadores.add(nuevito);
                 }else {
-                    NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos, es.Czombies);
+                    NodoDatos nuevito = new NodoDatos(txtnombre.getText(), titulo.getText(), Integer.parseInt(txtcantidad.getText()), masdatos, es.ListaPjugZ);
                    VentanaInicio n = new VentanaInicio();
                     es.Jugadores.add(nuevito);
                 }
@@ -96,7 +96,7 @@ public class VentanaDatos extends JFrame {
 
         reporteuser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-           es.Jugadores.grafo();
+          // es.Jugadores.grafo();
             }
         });
 
